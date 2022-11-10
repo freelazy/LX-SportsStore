@@ -1,10 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>SportsStore</title>
     <meta name="viewport" content="width=device-width" />
+    <title>SportsStore</title>
+    <link rel="stylesheet"
+        asp-href-include="/lib/bootstrap/dist/**/*.min.css"
+        asp-href-exclude="**/*-reboot*,**/*-grid*" />
 </head>
 <body>
-    @RenderBody()
+    <div class="navbar navbar-inverse bg-inverse" role="navigation">
+        <a href="#" class="navbar-brand">SPORTS STOKE</a>
+    </div>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">Put something useful here later</div>
+        <div class="col-9">
+            @RenderBody()
+        </div>
+    </div>
 </body>
 </html>

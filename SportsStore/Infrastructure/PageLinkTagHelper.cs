@@ -21,9 +21,13 @@ namespace SportsStore.Infrastructure
         [HtmlAttributeNotBound]
         public ViewContext ViewContext { get; set; }
 
+        // passed in
         public PagingInfo PageModel { get; set; }
-
         public string PageAction { get; set; }
+        public bool PageClassesEnable { get; set; } = false;
+        public string PageClass { get; set; }
+        public string PageClassNormal { get; set; }
+        public string PageClassSelected { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -33,6 +37,11 @@ namespace SportsStore.Infrastructure
             {
                 var tag = new TagBuilder("a");
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { productPage = i });
+                if (PageClassesEnable)
+                {
+                    tag.AddCssClass(PageClass);
+                    tag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
                 tag.InnerHtml.Append(i.ToString());
                 result.InnerHtml.AppendHtml(tag);
             }
