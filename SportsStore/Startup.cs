@@ -32,7 +32,7 @@ namespace SportsStore
 
             services.AddTransient<IProductRepository, EFProductRepository>();
 
-            services.AddMvc();
+            services.AddMvc(); 
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
