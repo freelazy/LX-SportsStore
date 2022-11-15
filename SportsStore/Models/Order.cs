@@ -26,5 +26,8 @@ namespace SportsStore.Models
 
         // 是否需要礼品包装
         public bool GiftWrap { get; set; }
+
+        [BindNever]
+        public bool Shipped { get; set; }
     }
 }
