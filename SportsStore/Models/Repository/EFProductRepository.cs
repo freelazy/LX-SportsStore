@@ -32,5 +32,16 @@ namespace SportsStore.Models.Repository
             }
             ctx.SaveChanges();
         }
+
+        public Product DeleteProduct(int productId)
+        {
+            var dbEntry = ctx.Products.FirstOrDefault(p => p.ProductID == productId);
+            if (dbEntry != null)
+            {
+                ctx.Products.Remove(dbEntry);
+                ctx.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }
