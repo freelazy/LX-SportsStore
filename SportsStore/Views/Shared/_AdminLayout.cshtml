@@ -4,10 +4,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" asp-href-include="/lib/bootstrap/dist/**/*.min.css" />
+    <style>
+        .input-validation-error { border-color: red; background-color: #fee; }
+    </style>
 </head>
 <body>
     <div class="m-1 p-1">
         <div class="bg-info p2"><h4>@ViewBag.Title</h4></div>
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
         @RenderBody()
     </div>
 </body>

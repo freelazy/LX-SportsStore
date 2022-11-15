@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SportsStore.Models;
 using SportsStore.Models.Repository;
+using System.Linq;
 
 namespace SportsStore.Controllers
 {
@@ -12,6 +14,25 @@ namespace SportsStore.Controllers
             this.repository = repository;
         }
 
-        public IActionResult Index() => View(repository.Products);
+        public IActionResult Index()
+            => View(repository.Products);
+
+        public IActionResult Edit(int productId) 
+            => View(repository.Products.FirstOrDefault(p => p.ProductID == productId));
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveProduct(product);
+                TempData["message"] = $"{product.Name} has been saved";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(product);
+            }
+        }
     }
 }

@@ -12,5 +12,10 @@ namespace SportsStore.Models.Repository
                 new Product { Name = "Surf board", Price = 179 },
                 new Product { Name = "Running shoes", Price = 95 }
             }.AsQueryable();
+
+        public void SaveProduct(Product product)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
