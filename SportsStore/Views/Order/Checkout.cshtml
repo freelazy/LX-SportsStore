@@ -1,0 +1,37 @@
+﻿@model Order
+
+<h2>Checkout Now</h2>
+<p>Please enter your name and address, and we will ship your goods right away!</p>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Checkout" method="post">
+    <h3>Ship to</h3>
+    <div class="from-group">
+        <label>Name:</label>
+        <input class="form-control" asp-for="Name" />
+    </div>
+    <h3>Address</h3>
+    <div class="from-group">
+        <label>Province:</label>
+        <input class="form-control" asp-for="Province" />
+    </div>
+    <div class="from-group">
+        <label>City:</label>
+        <input class="form-control" asp-for="City" />
+    </div>
+    <div class="from-group">
+        <label>Detail:</label>
+        <input class="form-control" asp-for="Detail" />
+    </div>
+    <h3>Options</h3>
+    <div class="checkbox">
+        <label>
+            <input asp-for="GiftWrap" /> Gift wrap thest items
+        </label>
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Complete Order" />
+    </div>
+
+</form>
