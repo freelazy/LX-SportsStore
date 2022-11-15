@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SportsStore.Infrastructure;
 using SportsStore.Models;
+using SportsStore.Models.Repository;
 using SportsStore.Models.ViewModels;
 using System.Linq;
 

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SportsStore.Models
+namespace SportsStore.Models.Repository
 {
     public class EFProductRepository : IProductRepository
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SportsStore.Models;
+using SportsStore.Models.Repository;
 using System.Linq;
 
 namespace SportsStore.Components

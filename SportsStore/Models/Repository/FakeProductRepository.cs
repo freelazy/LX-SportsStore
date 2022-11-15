@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SportsStore.Models
+namespace SportsStore.Models.Repository
 {
     public class FakeProductRepository : IProductRepository
     {
-        public IQueryable<Product> Products => 
+        public IQueryable<Product> Products =>
             new List<Product>
             {
                 new Product { Name = "Football", Price = 25 },
