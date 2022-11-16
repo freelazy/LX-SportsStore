@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
@@ -7,7 +8,7 @@ namespace SportsStore.Models
 {
     public static class SeedData
     {
-        public static void EnsurePopulated(IApplicationBuilder app)
+        public static async void EnsurePopulated(IApplicationBuilder app)
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {
@@ -28,6 +29,12 @@ namespace SportsStore.Models
                         new Product { Name = "Bling-Bling King", Description = "Gold-plated, diamond-studded King", Price = 1200, Category = "Chess" }
                     );
                     ctx.SaveChanges();
+                }
+                
+                var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
+                if (await userManager.FindByIdAsync("Admin") == null)
+                {
+                    await userManager.CreateAsync(new User { UserName = "Admin" }, "1234");
                 }
             }
         }
