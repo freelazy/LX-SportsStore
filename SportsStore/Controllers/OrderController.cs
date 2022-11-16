@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
 using SportsStore.Models.Repository;
 using System.Linq;
@@ -19,12 +20,14 @@ namespace SportsStore.Controllers
         /// <summary>
         /// 显示所有未发货的订单
         /// </summary>
+        [Authorize]
         public IActionResult List() =>
             View(repository.Orders.Where(o => !o.Shipped));
 
         /// <summary>
         /// 卖家发货之后，将订单设置为已发货状态
         /// </summary>
+        [Authorize]
         public IActionResult MarkShipped(int orderId)
         {
             var order = repository.Orders.FirstOrDefault(o => o.OrderID == orderId);

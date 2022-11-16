@@ -30,11 +30,11 @@ namespace SportsStore.Models
                     );
                     ctx.SaveChanges();
                 }
-                
-                var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
+           
+                var userManager = scope.ServiceProvider.GetService<UserManager<IdentityUser>>();
                 if (await userManager.FindByIdAsync("Admin") == null)
                 {
-                    await userManager.CreateAsync(new User { UserName = "Admin" }, "1234");
+                    await userManager.CreateAsync(new IdentityUser { UserName = "Admin" }, "1234");
                 }
             }
         }
